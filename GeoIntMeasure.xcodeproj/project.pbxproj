@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		289DAAD7140F0FCD0031AF95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289DAAD6140F0FCD0031AF95 /* UIKit.framework */; };
+		289DAAD9140F0FCD0031AF95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289DAAD8140F0FCD0031AF95 /* Foundation.framework */; };
+		289DAADB140F0FCD0031AF95 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289DAADA140F0FCD0031AF95 /* CoreGraphics.framework */; };
+		289DAAE1140F0FCD0031AF95 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 289DAADF140F0FCD0031AF95 /* InfoPlist.strings */; };
+		289DAAE3140F0FCD0031AF95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 289DAAE2140F0FCD0031AF95 /* main.m */; };
+		289DAAE7140F0FCD0031AF95 /* GeoIntMeasureAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 289DAAE6140F0FCD0031AF95 /* GeoIntMeasureAppDelegate.m */; };
+		289DAAEA140F0FCD0031AF95 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289DAAE8140F0FCD0031AF95 /* MainWindow.xib */; };
+		289DAAED140F0FCD0031AF95 /* GeoIntMeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289DAAEC140F0FCD0031AF95 /* GeoIntMeasureViewController.m */; };
+		289DAAF0140F0FCD0031AF95 /* GeoIntMeasureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289DAAEE140F0FCD0031AF95 /* GeoIntMeasureViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		289DAAD2140F0FCD0031AF95 /* GeoIntMeasure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoIntMeasure.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		289DAAD6140F0FCD0031AF95 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		289DAAD8140F0FCD0031AF95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		289DAADA140F0FCD0031AF95 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		289DAADE140F0FCD0031AF95 /* GeoIntMeasure-Info.plist */ = {isa = PBXFileReference; path = "GeoIntMeasure-Info.plist"; sourceTree = "<group>"; };
+		289DAAE0140F0FCD0031AF95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		289DAAE2140F0FCD0031AF95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		289DAAE4140F0FCD0031AF95 /* GeoIntMeasure-Prefix.pch */ = {isa = PBXFileReference; path = "GeoIntMeasure-Prefix.pch"; sourceTree = "<group>"; };
+		289DAAE5140F0FCD0031AF95 /* GeoIntMeasureAppDelegate.h */ = {isa = PBXFileReference; path = GeoIntMeasureAppDelegate.h; sourceTree = "<group>"; };
+		289DAAE6140F0FCD0031AF95 /* GeoIntMeasureAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeoIntMeasureAppDelegate.m; sourceTree = "<group>"; };
+		289DAAE9140F0FCD0031AF95 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		289DAAEB140F0FCD0031AF95 /* GeoIntMeasureViewController.h */ = {isa = PBXFileReference; path = GeoIntMeasureViewController.h; sourceTree = "<group>"; };
+		289DAAEC140F0FCD0031AF95 /* GeoIntMeasureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeoIntMeasureViewController.m; sourceTree = "<group>"; };
+		289DAAEF140F0FCD0031AF95 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GeoIntMeasureViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		289DAACF140F0FCD0031AF95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				289DAAD7140F0FCD0031AF95 /* UIKit.framework in Frameworks */,
+				289DAAD9140F0FCD0031AF95 /* Foundation.framework in Frameworks */,
+				289DAADB140F0FCD0031AF95 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		289DAAC7140F0FCD0031AF95 = {
+			isa = PBXGroup;
+			children = (
+				289DAADC140F0FCD0031AF95 /* GeoIntMeasure */,
+				289DAAD5140F0FCD0031AF95 /* Frameworks */,
+				289DAAD3140F0FCD0031AF95 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		289DAAD3140F0FCD0031AF95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				289DAAD2140F0FCD0031AF95 /* GeoIntMeasure.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		289DAAD5140F0FCD0031AF95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				289DAAD6140F0FCD0031AF95 /* UIKit.framework */,
+				289DAAD8140F0FCD0031AF95 /* Foundation.framework */,
+				289DAADA140F0FCD0031AF95 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		289DAADC140F0FCD0031AF95 /* GeoIntMeasure */ = {
+			isa = PBXGroup;
+			children = (
+				289DAAE5140F0FCD0031AF95 /* GeoIntMeasureAppDelegate.h */,
+				289DAAE6140F0FCD0031AF95 /* GeoIntMeasureAppDelegate.m */,
+				289DAAE8140F0FCD0031AF95 /* MainWindow.xib */,
+				289DAAEB140F0FCD0031AF95 /* GeoIntMeasureViewController.h */,
+				289DAAEC140F0FCD0031AF95 /* GeoIntMeasureViewController.m */,
+				289DAAEE140F0FCD0031AF95 /* GeoIntMeasureViewController.xib */,
+				289DAADD140F0FCD0031AF95 /* Supporting Files */,
+			);
+			path = GeoIntMeasure;
+			sourceTree = "<group>";
+		};
+		289DAADD140F0FCD0031AF95 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				289DAADE140F0FCD0031AF95 /* GeoIntMeasure-Info.plist */,
+				289DAADF140F0FCD0031AF95 /* InfoPlist.strings */,
+				289DAAE2140F0FCD0031AF95 /* main.m */,
+				289DAAE4140F0FCD0031AF95 /* GeoIntMeasure-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		289DAAD1140F0FCD0031AF95 /* GeoIntMeasure */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 289DAAF3140F0FCD0031AF95 /* Build configuration list for PBXNativeTarget "GeoIntMeasure" */;
+			buildPhases = (
+				289DAACE140F0FCD0031AF95 /* Sources */,
+				289DAACF140F0FCD0031AF95 /* Frameworks */,
+				289DAAD0140F0FCD0031AF95 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeoIntMeasure;
+			productName = GeoIntMeasure;
+			productReference = 289DAAD2140F0FCD0031AF95 /* GeoIntMeasure.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		289DAAC9140F0FCD0031AF95 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 289DAACC140F0FCD0031AF95 /* Build configuration list for PBXProject "GeoIntMeasure" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 289DAAC7140F0FCD0031AF95;
+			productRefGroup = 289DAAD3140F0FCD0031AF95 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				289DAAD1140F0FCD0031AF95 /* GeoIntMeasure */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		289DAAD0140F0FCD0031AF95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				289DAAE1140F0FCD0031AF95 /* InfoPlist.strings in Resources */,
+				289DAAEA140F0FCD0031AF95 /* MainWindow.xib in Resources */,
+				289DAAF0140F0FCD0031AF95 /* GeoIntMeasureViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		289DAACE140F0FCD0031AF95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				289DAAE3140F0FCD0031AF95 /* main.m in Sources */,
+				289DAAE7140F0FCD0031AF95 /* GeoIntMeasureAppDelegate.m in Sources */,
+				289DAAED140F0FCD0031AF95 /* GeoIntMeasureViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		289DAADF140F0FCD0031AF95 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				289DAAE0140F0FCD0031AF95 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		289DAAE8140F0FCD0031AF95 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				289DAAE9140F0FCD0031AF95 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		289DAAEE140F0FCD0031AF95 /* GeoIntMeasureViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				289DAAEF140F0FCD0031AF95 /* en */,
+			);
+			name = GeoIntMeasureViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		289DAAF1140F0FCD0031AF95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		289DAAF2140F0FCD0031AF95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		289DAAF4140F0FCD0031AF95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GeoIntMeasure/GeoIntMeasure-Prefix.pch";
+				INFOPLIST_FILE = "GeoIntMeasure/GeoIntMeasure-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		289DAAF5140F0FCD0031AF95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GeoIntMeasure/GeoIntMeasure-Prefix.pch";
+				INFOPLIST_FILE = "GeoIntMeasure/GeoIntMeasure-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		289DAACC140F0FCD0031AF95 /* Build configuration list for PBXProject "GeoIntMeasure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				289DAAF1140F0FCD0031AF95 /* Debug */,
+				289DAAF2140F0FCD0031AF95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		289DAAF3140F0FCD0031AF95 /* Build configuration list for PBXNativeTarget "GeoIntMeasure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				289DAAF4140F0FCD0031AF95 /* Debug */,
+				289DAAF5140F0FCD0031AF95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 289DAAC9140F0FCD0031AF95 /* Project object */;
+}
