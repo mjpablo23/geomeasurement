@@ -1,0 +1,124 @@
+//
+//  LicenseView.m
+//  GeoIntMeasure
+//
+//  Created by Paul Yang on 10/10/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import "LicenseView.h"
+
+@implementation LicenseView
+
+@synthesize textView, webView, button, privacyButton, delegate;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
+    showingPrivacy = 0;
+    
+    NSString *filePath;
+	// NSString *myText;
+    
+    /*
+    filePath = [[NSBundle mainBundle] pathForResource:@"geointEULA" ofType:@"txt"];
+    myText = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    textView.text = myText;
+    textView.hidden = YES;
+     */
+    
+    filePath = [[NSBundle mainBundle] pathForResource:@"EULA" ofType:@"rtf"];
+    // NSLog(@"NSURL filePath: %@", filePath);
+    
+    NSURL *url = [NSURL fileURLWithPath:filePath];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    
+    [webView loadRequest:req];
+    [webView setScalesPageToFit:YES];
+     
+}
+
+-(IBAction) buttonPressed:(id) sender {
+    NSLog(@"buttonPressed 1");
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLicense"];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(IBAction) privacyButtonPressed:(id)sender {
+    
+    /*
+    if ([delegate respondsToSelector:@selector(presentInstructionsView)]) {
+        [delegate presentInstructionsView];
+    }
+     */
+    
+    NSString *filePath = nil;
+    if (showingPrivacy == 0) {
+        filePath = [[NSBundle mainBundle] pathForResource:@"privacy" ofType:@"rtf"];
+        [privacyButton setTitle:@"License" forState:UIControlStateNormal];
+        showingPrivacy = 1;
+    }
+    else {
+        filePath = [[NSBundle mainBundle] pathForResource:@"EULA" ofType:@"rtf"];
+        [privacyButton setTitle:@"Privacy Notice" forState:UIControlStateNormal];     
+        showingPrivacy = 0;
+    }
+    
+    NSURL *url = [NSURL fileURLWithPath:filePath];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    
+    [webView loadRequest:req];
+    [webView setScalesPageToFit:YES];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    if (delegate) {
+        NSLog(@"buttonPressed 2");    
+        if ([delegate respondsToSelector:@selector(testPrint:)]) {
+            NSLog(@"calling delegate for testPrint");
+            [delegate testPrint:1];
+        }
+    }
+    
+    NSLog(@"buttonPressed 3");
+    if ([delegate respondsToSelector:@selector(presentInstructionsView)]) {
+        NSLog(@"calling delegate for presentInstructions");
+        [delegate presentInstructionsView];
+    }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+@end

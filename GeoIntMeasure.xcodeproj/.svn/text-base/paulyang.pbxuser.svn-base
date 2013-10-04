@@ -1,0 +1,88 @@
+// !$*UTF8*$!
+{
+	289DAAC9140F0FCD0031AF95 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 28AA6B8E141C82B50089ED61 /* GeoIntMeasure */;
+		activeTarget = 289DAAD1140F0FCD0031AF95 /* GeoIntMeasure */;
+		codeSenseManager = 28AA6BA2141C82B90089ED61 /* Code sense */;
+		executables = (
+			28AA6B8E141C82B50089ED61 /* GeoIntMeasure */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					356,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 337412789;
+			PBXWorkspaceStateSaveDate = 337412789;
+		};
+		sourceControlManager = 28AA6BA1141C82B90089ED61 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	289DAAD1140F0FCD0031AF95 /* GeoIntMeasure */ = {
+		activeExec = 0;
+		executables = (
+			28AA6B8E141C82B50089ED61 /* GeoIntMeasure */,
+		);
+	};
+	28AA6B8E141C82B50089ED61 /* GeoIntMeasure */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = GeoIntMeasure;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	28AA6BA1141C82B90089ED61 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	28AA6BA2141C82B90089ED61 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}

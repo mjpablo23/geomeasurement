@@ -1,0 +1,73 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138
+{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;\f1\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+{\info
+{\author Adriana Luedke}
+{\*\company Lockheed Martin}}\margl1440\margr1440\vieww12600\viewh10200\viewkind0
+\deftab720
+\pard\pardeftab720\sb100\sa100\pardirnatural
+
+\f0\fs24 \cf0 BY ACCESSING, DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING THE GEOINT MEASUREMENT APPLICATION SOFTWARE AND DOCUMENTATION THAT ACCOMPANY THIS AGREEMENT (THE "SOFTWARE"), YOU ARE AGREEING TO ALL OF THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS AGREEMENT, YOU MAY NOT ACCESS, DOWNLOAD, INSTALL, COPY OR USE THE SOFTWARE. \
+\
+\pard\pardeftab720\sb100\sa100\pardirnatural
+
+\b \cf0 INTERNAL EVALUATION USE ONLY:
+\b0  Your use of the Software is limited to internal evaluation purposes only. External use or exposure of works which use the Software is not permitted under the terms of this Agreement. You must acquire a license for the Software from Lockheed Martin Corporation for any external use of the Software. Contact Jason Loveland (
+\f1 jason.c.loveland@lmco.com) 
+\f0 for more information. \
+\
+
+\b 1. LICENSE GRANTS
+\b0 \uc0\u8232 Subject to all the terms of this Agreement, Lockheed Martin Corporation (\'93LM\'94) hereby grants to you a one-time, royalty-free, non-exclusive, non-transferable, non-sublicenseable license to copy and use the Software solely for internal evaluation purposes for a period of 
+\b 90 DAYS
+\b0  from your first access, download, installation, or use of the Software ("Evaluation Period"). You may (i) access, download, install, and copy the Software on a reasonable number of development systems within your company; and (ii) use the Software only for internal evaluation purposes. \
+\
+
+\b 2. LICENSE OBLIGATIONS
+\b0 \uc0\u8232 \ul (a) You agree that you shall not:\ulnone \uc0\u8232 (i) reverse compile, reverse engineer, disassemble, unobfuscate, reformat, or otherwise attempt to read or make readable the Object Code or Source Code (or the underlying ideas, algorithms, structure or organization) of the Software, in whole or in part;\u8232 (ii) modify the Software or create any derivative work based on the Software;\u8232 (iii) distribute, rent, lease, sell, sublicense, or grant a security interest in, the Software or otherwise transfer any rights in the Software;\u8232 (iv) remove or alter any copyright, trademark or proprietary notice or other legend appearing on the Product or any copy thereof;\u8232 (v) use the Software in any manner that violates any intellectual property or privacy rights of any third party; or\u8232 (vi) use the Software in any manner that violates any applicable international, federal, state or local law or regulation.\
+\pard\pardeftab720\pardirnatural
+\cf0 \ul \ulc0 (b) Unless specifically provided herein, you agree that you shall do the following:\
+\pard\pardeftab720\pardirnatural
+\cf0 \ulnone (i) only use the Software for internal evaluation purposes;\
+(ii) take all reasonable steps to safeguard the Software from theft or loss;\
+(iii) limit access to the Software to employees, contractors, consultants, agents or affiliated entities for internal business purposes only and take appropriate action by instruction or agreement with  employees, contractors, consultants, agents or affiliated entities who are permitted access to Software advising such employees, contractors, consultants, agents, or affiliated entities of your obligations hereunder;\
+(iv) not export,  re-export or transfer, whether directly or indirectly, the Software to any other country; and\
+(v) not transfer this license to any United States government sanctioned or embargoed country, United Nations sanctioned country, or any entity residing in one of these countries in accordance with US Export Regulations.  Listings of embargoed and sanctioned countries and affected entities may change.\
+\
+\pard\pardeftab720\pardirnatural
+
+\b \cf0 3. RESERVATION OF OWNERSHIP
+\b0 \uc0\u8232 LM and its suppliers retain all right, title and interest in and to the Software, including, without limitation, all copyrights, trademarks, patents, trade secrets, proprietary and other intellectual property rights contained in or associated with the Software, all copies thereof, and all enhancements or modifications thereto. You acknowledge that the Software contains the valuable trade secrets of LM and agree to protect all information related to the Software in confidence.  You acknowledge and agree that the Software is licensed to you and \ul not\ulnone  sold to you.  You understand and agree that no right, title or interest in any intellectual property relating to the Software is transferred to Licensee.  LM expressly retains all rights not expressly granted in this Agreement.\
+\pard\pardeftab720\sb100\sa100\pardirnatural
+
+\b \cf0 THIRD-PARTY COMPONENTS:
+\b0  Any third party software embedded in the Software is licensed to you according to the terms and conditions of any license used to grant rights in such third party software.  Suppliers, if any, whose software is embedded in the Software licensed under this Agreement, shall each be a third party beneficiary of this Agreement and shall each have the right to enforce this Agreement and to exercise the rights granted to you herein.\
+\
+\pard\pardeftab720\pardirnatural
+
+\b \cf0 4. WARRANTY AND LIMITATION OF LIABILITY\
+\pard\pardeftab720\pardirnatural
+
+\b0 \cf0 \uc0\u8232 
+\b THERE ARE NO WARRANTIES, EXPRESS OR IMPLIED, WHETHER ORAL OR WRITTEN, WITH RESPECT TO THE SOFTWARE, ANY DOCUMENTATION AND ANY OTHER GOODS AND SERVICES COVERED BY OR FURNISHED PURSUANT TO THIS AGREEMENT, WHICH ARE PROVIDED \'93AS IS.\'94 THIS AGREEMENT EXPRESSLY EXCLUDES, WITHOUT LIMITATION, IMPLIED WARRANTIES OF MERCHANTABILITY, OR OF FITNESS FOR A PARTICULAR PURPOSE, NONINFRINGEMENT, OR ARISING FROM A COURSE OF PERFORMANCE OR DEALING, OR FROM USAGE OR TRADE.  IN ADDITION, LM EXPRESSLY DISCLAIMS ANY WARRANTY OR REPRESENTATION TO ANY PERSON OTHER THAN YOU WITH RESPECT TO THE SOFTWARE OR ANY PART THEREOF.\
+NEITHER LM, ITS SUPPLIERS, NOR ANYONE ELSE THAT HAS BEEN INVOLVED IN THE CREATION, PRODUCTION, DELIVERY, SUPPORT OF THE SOFTWARE OR DOCUMENTATION SHALL BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL OR INCIDENTAL DAMAGES, OR ANY FORM OF EQUITABLE DAMAGES, ARISING OUT OF OR RELATING TO YOUR USE OF, OR INABILITY TO USE, THE SOFTWARE, DOCUMENTATION OR OTHER SERVICES, EVEN IF LM HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES OR CLAIMS, WHETHER IN CONTRACT, TORT OR STRICT LIABILITY, AT LAW OR EQUITY.  IN NO EVENT WILL LM\'92S DAMAGES FOR ANY CLAIM ARISING HEREUNDER EXCEED THE LICENSE FEES RECEIVED FROM YOU.
+\b0  \
+\
+\pard\pardeftab720\sb100\sa100\pardirnatural
+
+\b \cf0 5. TERMINATION; SURVIVAL
+\b0 \uc0\u8232 The license granted hereunder shall terminate at the earliest of (i) the end of the specified Evaluation Period; (ii) immediately upon your failure to comply with all of the terms and limitations described herein; or (iii) immediately upon written notice of termination by LM, with or without cause. Upon termination for any reason, you shall destroy all copies of the Software. Sections 2, 3, 4, and 5 shall survive any termination or expiration of this Agreement or the license granted hereunder. \
+\
+\pard\pardeftab720\pardirnatural
+
+\b \cf0 6. GENERAL
+\b0 \uc0\u8232 (a) This Agreement is the entire agreement between you and LM concerning this subject matter. This Agreement may not be amended except in writing signed by an authorized representative of LM. \
+(b) This Agreement shall be binding upon, inure to the benefit of and be enforceable by and against the respective successors and assigns of the parties.  Neither this Agreement, nor any rights, liabilities nor obligations hereunder may be assigned or otherwise transferred by you without LM\'92s prior written consent.  Any unauthorized assignment or transfer shall be null and void.\
+(c) This Agreement shall be governed by and interpreted in accordance with the laws of the State of Maryland without giving effect to its choice of law principles. Any legal action regarding this Agreement will be heard in the state or federal courts having jurisdiction in the State of Maryland, and you hereby submit to the personal jurisdiction and venue of such courts. The United Nations Convention on Contracts for the International Sale of Goods shall not apply to this Agreement and is expressly disclaimed. \
+(d) The prevailing party in any action or proceeding to enforce the provisions of this Agreement shall be entitled to recover all reasonable attorneys' fees and expenses incurred in connection therewith. \
+(e) In the event of a breach of this Agreement, monetary damages may not be a sufficient remedy, and LM shall be entitled, without waiving any other rights or remedies, to such injunctive or equitable relief (without posting of a bond) as may be deemed proper by a court of competent jurisdiction. \
+(f) If any provision of this Agreement is held to be invalid or unenforceable by a court of competent jurisdiction, that provision shall be limited or eliminated to the minimum extent necessary so that the remaining provisions remain in full force and effect. \
+(g) The failure of LM to require your performance of any provision herein shall not affect the full right to require such performance at any time thereafter; nor shall the waiver by LM of a breach of any provision herein be taken or held to be a waiver of the provision itself. \
+(h) Notices required or contemplated by this Agreement to be given by either party must be in writing and may be delivered in person or sent by courier, express mail or postage prepaid certified, return receipt requested mail addressed to the party for whom intended, at its address set forth above.  Notice shall be deemed effective upon receipt or refusal to receive.\
+\
+}
