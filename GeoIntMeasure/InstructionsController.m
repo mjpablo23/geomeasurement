@@ -39,7 +39,7 @@
 	[self.view addGestureRecognizer:recognizer];
     recognizer.enabled = YES;
     
-    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"instructionsCrop.png"]];
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"instructions.png"]];
     [self.view addSubview:image];
     [image release];
 }
@@ -62,7 +62,7 @@
 	NSLog(@"tap detected");
     
     // cancel the search bar
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -60,9 +60,6 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showLicense"];
     }
     
-    //[geoIntView release];
-    //[navcon release];
-    
     sleep(1);
     
     return YES;

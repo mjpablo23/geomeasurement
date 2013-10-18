@@ -20,7 +20,6 @@
 {
     xmlTextWriterPtr _writer;
     xmlBufferPtr _buf;
-    xmlChar *_tmp;
     // NSLog(@"test xmlDataFromRequest");
     
     const char *_UTF8Encoding = "UTF-8";
@@ -99,7 +98,7 @@
 
 -(void) writePoints:(NSMutableArray *) coordinatePoints writer:(xmlTextWriterPtr) _writer withEncoding:(const char *)_encoding {
     xmlChar *_tmp;
-    int numPoints = [coordinatePoints count];
+    NSUInteger numPoints = [coordinatePoints count];
     for (int i=0; i<numPoints; i++) {
         MapPoint *mp = [coordinatePoints objectAtIndex:i];
         CLLocationCoordinate2D coord = [[coordinatePoints objectAtIndex:i] coordinate];
@@ -125,7 +124,7 @@
 }
 
 -(void) writeHybridRouteTotal:(NSMutableArray *) hybridPoints writer:(xmlTextWriterPtr) _writer withEncoding:(const char *)_encoding {
-    int numPoints = [hybridPoints count];
+    NSUInteger numPoints = [hybridPoints count];
     if (numPoints <= 1) {
         return;
     }
@@ -166,7 +165,7 @@
 
 -(void) writeLine:(NSMutableArray *) coordinatePoints writer:(xmlTextWriterPtr) _writer withEncoding:(const char *)_encoding {
     xmlChar *_tmp;
-    int numPoints = [coordinatePoints count];
+    NSUInteger numPoints = [coordinatePoints count];
     NSString *style = @"#transPurpleLine";
     
     xmlTextWriterStartElement(_writer, BAD_CAST "Placemark");
@@ -194,7 +193,7 @@
 
 -(void) writePolygon:(NSMutableArray *) coordinatePoints writer:(xmlTextWriterPtr) _writer withEncoding:(const char *)_encoding {
     xmlChar *_tmp;
-    int numPoints = [coordinatePoints count];
+    NSUInteger numPoints = [coordinatePoints count];
     NSString *style = @"#transBluePoly";
     
     xmlTextWriterStartElement(_writer, BAD_CAST "Placemark");

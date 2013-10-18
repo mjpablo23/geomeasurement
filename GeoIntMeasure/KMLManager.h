@@ -20,6 +20,6 @@
 
 -(NSArray *) filePathsArray;
 -(NSString *) fileWithPath:(NSString *) file;
--(NSString *) fileWithPathInDocuments:(int) row;
+-(NSString *) fileWithPathInDocuments:(NSUInteger) row;
 
 @end

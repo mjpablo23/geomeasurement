@@ -19,11 +19,11 @@
     if (self) {
         // Initialization code
         primaryLabel = [[UILabel alloc]init];
-        primaryLabel.textAlignment = UITextAlignmentLeft;
+        primaryLabel.textAlignment = NSTextAlignmentLeft;
         primaryLabel.font = [UIFont systemFontOfSize:15];
         [primaryLabel setBackgroundColor:[UIColor clearColor]];
         secondaryLabel = [[UILabel alloc]init];
-        secondaryLabel.textAlignment = UITextAlignmentLeft;
+        secondaryLabel.textAlignment = NSTextAlignmentLeft;
         secondaryLabel.font = [UIFont systemFontOfSize:12];
         [secondaryLabel setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:primaryLabel];

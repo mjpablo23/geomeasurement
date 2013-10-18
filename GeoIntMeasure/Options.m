@@ -52,7 +52,6 @@
 
     [mapTypeControl setSelectedSegmentIndex:appDelegate.measModel.mapTypeSelection];
 
-    mapTypeControl.segmentedControlStyle = UISegmentedControlStyleBar;
     [mapTypeControl addTarget:self action:@selector(changeMapType:) forControlEvents:UIControlEventValueChanged];
     
     [mapTypeControl setSelectedSegmentIndex:appDelegate.measModel.mapTypeSelection];
@@ -67,8 +66,7 @@
     [unitControl setTitle:@"ha" forSegmentAtIndex:6];
     
     unitControl.tintColor = [UIColor grayColor];
-        
-    unitControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    
     [unitControl addTarget:self action:@selector(changeUnitType:) forControlEvents:UIControlEventValueChanged];
     
     [unitControl setSelectedSegmentIndex:appDelegate.measModel.unitSelection];
@@ -287,7 +285,7 @@
     
 	// Set up recipients    
     if (mode == 1) {
-        NSArray *toRecipients = [NSArray arrayWithObject:@"paulyang7000@gmail.com"]; 
+        NSArray *toRecipients = [NSArray arrayWithObject:@"eric.narges@lmco.com"]; 
         [picker setToRecipients:toRecipients];
     }
 	
@@ -320,7 +318,7 @@
 	[picker setMessageBody:emailBody isHTML:NO];
 	
     // NSLog(@"calling displayComposerSheet::presentModalViewController");
-	[self presentModalViewController:picker animated:YES];
+	[self presentViewController:picker animated:YES completion:nil];
     [picker release];
 }
 
@@ -348,7 +346,7 @@
 			message.text = @"Result: not sent";
 			break;
 	}
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 # pragma mark action sheet

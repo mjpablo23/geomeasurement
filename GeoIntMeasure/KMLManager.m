@@ -38,7 +38,7 @@
     return filePath;
 }
 
--(NSString *) fileWithPathInDocuments:(int) row {
+-(NSString *) fileWithPathInDocuments:(NSUInteger) row {
     NSArray *filePathsArray = [self filePathsArray];
     NSString *fileName = [filePathsArray objectAtIndex:row];
     return [self fileWithPath:fileName];

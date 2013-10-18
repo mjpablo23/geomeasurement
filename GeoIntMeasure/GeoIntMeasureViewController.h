@@ -24,25 +24,27 @@
     IBOutlet UIView *messageView;
     
     CLLocationManager *locationManager;
-    int coreLocationFailed; 
-    // int lookingForLocation; 
-    int doneWaitingForLocationAquire; 
+    int coreLocationFailed;
+    // int lookingForLocation;
+    int doneWaitingForLocationAquire;
     
     KMLParser *kml;
     UITapGestureRecognizer *recognizer;
-    CGSize toggleButtonSize; 
-    CGPoint toggleButtonLocation; 
+    CGSize toggleButtonSize;
+    CGPoint toggleButtonLocation;
     CGSize messageViewSize;
-    UIImage *toggleButtonImage; 
+    UIImage *toggleButtonImage;
     
     NSTimer *trackLocationTimer;
     NSTimer *waitForCurrentLocationTimer;
     
-    int currentRouteLineReturnVal; 
+    int currentRouteLineReturnVal;
     int routeBlockDone;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
+@property (nonatomic, retain) IBOutlet UIToolbar *upperToolbar;
+@property (nonatomic, retain) IBOutlet UIView *upperToolbarView;
 
 @property (nonatomic, retain) IBOutlet UIView *messageView;
 @property (nonatomic, retain) IBOutlet UILabel *messageLabel;
@@ -51,7 +53,7 @@
 
 @property (nonatomic, retain) IBOutlet UIView *searchBarView;
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityInd; 
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityInd;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *mappingModeButton;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *mappingModeControl;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *currentLocationButton;
@@ -63,13 +65,13 @@
 @property (nonatomic, retain) IBOutlet UISegmentedControl *hybridPathTypeSegmentedControl;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *hybridPathTypeButton;
 @property (nonatomic, retain) IBOutlet UIPopoverController *optionsPopover;
-@property int optionsPopoverOn; 
+@property int optionsPopoverOn;
 @property (nonatomic, retain) IBOutlet UIPopoverController *pinListPopover;
 @property int pinListPopoverOn;
 @property (nonatomic, retain) IBOutlet UIPopoverController *detailPopover;
 @property int detailPopoverOn;
 
-// @property (nonatomic, retain) IBOutlet PinListTable *pinList; 
+// @property (nonatomic, retain) IBOutlet PinListTable *pinList;
 
 -(void) foundLocation;
 -(IBAction) handleTapGesture:(UITapGestureRecognizer *) sender;
@@ -95,8 +97,7 @@ typedef void (^block_t)();
 -(void) runCodeBlockWithActivityInd:(block_t) codeBlock;
 -(void) processAnnotationCallout:(MapPoint *) mp controlTagVal:(int)controlTagVal;
 
--(void) drawAllLines; 
--(void) drawPrevLine;
+
 -(void) drawCurrentPolygon;
 -(void) drawCurrentPolyline;
 -(int) drawNewPolyline:(MapPoint *) newPoint;
@@ -110,11 +111,9 @@ typedef void (^block_t)();
 -(void) presentLicenseAgreement;
 
 -(void) setTrackLocationTimer;
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 
 -(void) openOptionsMenu;
 -(void) dismissOptionsPopoverController;
--(void) updatePinListTableView;
 -(void) dismissPinListPopoverController;
 -(void) processDetailAnnotationView:(MapPoint *) mp;
 -(void) dismissDetailPopoverController;
@@ -132,7 +131,6 @@ typedef void (^block_t)();
                   zoomLevel:(NSUInteger)zoomLevel
                    animated:(BOOL)animated;
 
-- (IBAction) showAddress;
 -(CLLocationCoordinate2D) addressLocation;
 
 -(void) writeKMLFile;
@@ -161,7 +159,7 @@ typedef void (^block_t)();
 -(UISegmentedControl *) hybridSegmentedControl;
 -(void) changeHybridType:(UISegmentedControl *) segmentedControl;
 
--(UISegmentedControl *) pinActionSegmentedControl; 
+-(UISegmentedControl *) pinActionSegmentedControl;
 -(void) doPinAction:(UISegmentedControl *) segmentedControl;
 -(void) doPinActionMeasureMode:(UISegmentedControl *) segmentedControl;
 -(void) doPinActionRouteMode:(UISegmentedControl *) segmentedControl;

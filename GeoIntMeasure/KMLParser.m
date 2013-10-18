@@ -625,7 +625,7 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
     [self clearString];
 }
 
-- (void)applyToOverlayPathView:(MKOverlayPathView *)view
+- (void)applyToOverlayPathView:(MKOverlayPathRenderer *)view
 {
     view.strokeColor = strokeColor;
     view.fillColor = fillColor;
@@ -780,11 +780,11 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
     return poly;
 }
 
-- (MKOverlayPathView *)createOverlayView:(MKShape *)shape
+- (MKPolygonRenderer *)createOverlayView:(MKShape *)shape
 {
     // KMLPolygon corresponds to MKPolygonView
     
-    MKPolygonView *polyView = [[MKPolygonView alloc] initWithPolygon:(MKPolygon *)shape];
+    MKPolygonRenderer *polyView = [[MKPolygonRenderer alloc] initWithPolygon:(MKPolygon *)shape];
     return [polyView autorelease];
 }
 
@@ -819,10 +819,10 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
     return [MKPolyline polylineWithCoordinates:points count:length];
 }
 
-- (MKOverlayPathView *)createOverlayView:(MKShape *)shape
+- (MKPolylineRenderer *)createOverlayView:(MKShape *)shape
 {
     // KMLLineString corresponds to MKPolylineView
-    MKPolylineView *lineView = [[MKPolylineView alloc] initWithPolyline:(MKPolyline *)shape];
+    MKPolylineRenderer *lineView = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline *)shape];
     return [lineView autorelease];
 }
 

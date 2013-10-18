@@ -11,24 +11,24 @@
 #define REGION_DIST 25000
 
 /*
-@implementation UINavigationBar(CustomImage)
-- (void)drawRect:(CGRect)rect {
-    UIImage *image = [UIImage imageNamed: @"TopNav.png"];
-    [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-}
-@end
-*/
+ @implementation UINavigationBar(CustomImage)
+ - (void)drawRect:(CGRect)rect {
+ UIImage *image = [UIImage imageNamed: @"TopNav.png"];
+ [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+ }
+ @end
+ */
 
 @implementation GeoIntMeasureViewController
 
-@synthesize mapView, messageView, messageLabel, toggleButton, messageViewOnScreen, searchBarView, searchBar, activityInd, mappingModeButton, mappingModeControl, currentLocationButton, optionsMenuButton, listButton, flexibleSpace, measSegmentedControl, measControlButton, hybridPathTypeSegmentedControl, hybridPathTypeButton, optionsPopover, optionsPopoverOn, pinListPopover, pinListPopoverOn, detailPopover, detailPopoverOn;
+@synthesize mapView, messageView, messageLabel, toggleButton, messageViewOnScreen, searchBarView, searchBar, activityInd, mappingModeButton, mappingModeControl, currentLocationButton, optionsMenuButton, listButton, flexibleSpace, measSegmentedControl, measControlButton, hybridPathTypeSegmentedControl, hybridPathTypeButton, optionsPopover, optionsPopoverOn, pinListPopover, pinListPopoverOn, detailPopover, detailPopoverOn, upperToolbarView, upperToolbar;
 
 # pragma mark initialize mapView
 
 -(MKMapView *) mapView {
-    if (!mapView) mapView = [[MKMapView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame]; 
+    if (!mapView) mapView = [[MKMapView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     
-    // added 1-18-12 -- to get google logo to show up 
+    // added 1-18-12 -- to get google logo to show up
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     return mapView;
@@ -58,7 +58,7 @@
     }
     
     [activityInd stopAnimating];
-    messageLabel.hidden = NO; 
+    messageLabel.hidden = NO;
     
 	MKPinAnnotationView *l_mpPin=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
     
@@ -72,7 +72,7 @@
     else {
         l_mpPin.pinColor = MKPinAnnotationColorRed;
     }
-
+    
     l_mpPin.draggable = YES;
     
     l_mpPin.animatesDrop=TRUE;
@@ -87,12 +87,12 @@
     UIButton *removeView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, iconSize.width, iconSize.height)];
     [removeView setImage:removeIcon forState:UIControlStateNormal];
     l_mpPin.leftCalloutAccessoryView = removeView;
-    l_mpPin.leftCalloutAccessoryView.tag = 0; 
+    l_mpPin.leftCalloutAccessoryView.tag = 0;
     [removeView release];
     
     l_mpPin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     l_mpPin.rightCalloutAccessoryView.tag = 1;
-     
+    
     return [l_mpPin autorelease];
 }
 
@@ -101,30 +101,30 @@
     MapPoint *mp = aView.annotation;
     block_t annotationBlock = ^{
         // NSLog(@"running processAnnotationCallout");
-        [self processAnnotationCallout:mp controlTagVal:control.tag]; 
+        [self processAnnotationCallout:mp controlTagVal:control.tag];
     };
     [self runCodeBlockWithActivityInd:annotationBlock];
 }
 
 -(void) runCodeBlockWithActivityInd:(block_t) codeBlock {
     
-        [self.activityInd startAnimating];
-        self.messageLabel.hidden = YES;
-        
-        //NSLog(@"create downloadQueue");
-        dispatch_queue_t downloadQueue = dispatch_queue_create("activity ind block", NULL);
-        dispatch_queue_t callerQueue = dispatch_get_current_queue();
-        //NSLog(@"call dispatch_async");
-        dispatch_async(downloadQueue, ^{
-            dispatch_async(callerQueue, ^{
-                codeBlock();
-                [self.activityInd stopAnimating];
-                self.messageLabel.hidden = NO;
-            });
-            dispatch_release(callerQueue);
+    [self.activityInd startAnimating];
+    self.messageLabel.hidden = YES;
+    
+    //NSLog(@"create downloadQueue");
+    dispatch_queue_t downloadQueue = dispatch_queue_create("activity ind block", NULL);
+    dispatch_queue_t callerQueue = dispatch_get_current_queue();
+    //NSLog(@"call dispatch_async");
+    dispatch_async(downloadQueue, ^{
+        dispatch_async(callerQueue, ^{
+            codeBlock();
+            [self.activityInd stopAnimating];
+            self.messageLabel.hidden = NO;
         });
-        //NSLog(@"release downloadQueue");
-        dispatch_release(downloadQueue);        
+        dispatch_release(callerQueue);
+    });
+    //NSLog(@"release downloadQueue");
+    dispatch_release(downloadQueue);
 }
 
 -(void) processAnnotationCallout:(MapPoint *) mp controlTagVal:(int)controlTagVal {
@@ -165,12 +165,12 @@
             [self updateMappingModeTo:originalMapMode];
         };
         [self runCodeBlockWithActivityInd:dragBlock];
-    }    
+    }
 }
 
 - (void)mapView:(MKMapView *)sender didSelectAnnotationView:(MKAnnotationView *)aView
 {
-
+    
 }
 
 # pragma mark core location methods
@@ -192,15 +192,15 @@
         // NSLog(@"finished waiting for current location");
     }
     
-    coreLocationFailed = 0; 
+    coreLocationFailed = 0;
     
-    MapPoint *mp = [[MapPoint alloc] initWithCoordinate:[newLocation coordinate] title:@"current point" subtitle:@"subtitle"];    
+    MapPoint *mp = [[MapPoint alloc] initWithCoordinate:[newLocation coordinate] title:@"current point" subtitle:@"subtitle"];
     
     MKUserLocation *blueDot = [self.mapView userLocation];
-
+    
     // [blueDot setTitle:[NSString stringWithFormat:@"(%.5f, %.5f)", mp.coordinate.latitude, mp.coordinate.longitude]];
     
-    [blueDot setTitle:[appDelegate.measModel getLatLonStr:mp.coordinate.latitude longitude:mp.coordinate.longitude]];    
+    [blueDot setTitle:[appDelegate.measModel getLatLonStr:mp.coordinate.latitude longitude:mp.coordinate.longitude]];
     [blueDot setSubtitle:@"current location"];
     
     if ([appDelegate.measModel.coordinatePoints count] == 0) {
@@ -237,8 +237,8 @@
     NSLog(@"core location failure: can't find current location");
     coreLocationFailed = 1;
     [activityInd stopAnimating];
-    messageLabel.hidden = NO; 
-    messageLabel.text = @"current location not found"; 
+    messageLabel.hidden = NO;
+    messageLabel.text = @"current location not found";
 }
 
 - (void)didReceiveMemoryWarning
@@ -255,6 +255,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     [super viewDidLoad];
     
     appDelegate = [[UIApplication sharedApplication] delegate];
@@ -266,25 +270,25 @@
     
     // dFinder = [[LMDirectionFinder alloc] init];
     
-    coreLocationFailed = 0; 
+    coreLocationFailed = 0;
     
     
-     // Tap gestures to dismiss search keyboard
+    // Tap gestures to dismiss search keyboard
     // UITapGestureRecognizer *recognizer;
 	recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)] autorelease];
 	[(UITapGestureRecognizer *)recognizer setNumberOfTouchesRequired:1];
 	[self.mapView addGestureRecognizer:recognizer];
     recognizer.enabled = NO;
 	// recognizer.delegate = self;
-
+    
     
     // long tap to put down waypoint
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
                                           initWithTarget:self action:@selector(handleLongPress:)];
     lpgr.minimumPressDuration = 0.35; //user needs to press for 0.35 seconds
     [self.mapView addGestureRecognizer:lpgr];
     [lpgr release];
-
+    
     self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame] autorelease];
     
     self.mapView.frame = self.view.bounds;
@@ -295,39 +299,60 @@
     
     // change title back to Start later
     // list button item
-    // UIBarButtonItem *listButton = [[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(openPinListTable)] autorelease]; 
-    listButton = [[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(openPinListTable)] autorelease]; 
+    //UIBarButtonItem *listButton = [[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(openPinListTable)] autorelease];
+    listButton = [[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(openPinListTable)] autorelease];
+    
+
     
     UIImage *listIconOrig = [UIImage imageNamed:@"folder.png"];
     UIImage *listIcon = [appDelegate.measModel imageWithImage:listIconOrig scaledToSize:CGSizeMake(20, 20)];
     [listButton setImage:listIcon];
     
-    self.navigationItem.rightBarButtonItem = listButton;
+    //self.navigationItem.rightBarButtonItem = listButton;
     
     // search button
-    UIBarButtonItem *searchButton = [[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(testSearch)] autorelease]; 
+    UIBarButtonItem *searchButton = [[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(testSearch)] autorelease];
     
     UIImage *searchIconOrig = [UIImage imageNamed:@"magnifyingglass.png"];
     UIImage *searchIcon = [appDelegate.measModel imageWithImage:searchIconOrig scaledToSize:CGSizeMake(20, 20)];
     [searchButton setImage:searchIcon];
     // searchButton.tintColor = [UIColor grayColor];
     
-    self.navigationItem.leftBarButtonItem = searchButton;
+   // self.navigationItem.leftBarButtonItem = searchButton;
     
-    self.navigationItem.titleView = [self pinActionSegmentedControl];
+    //self.navigationItem.titleView = [self pinActionSegmentedControl];
+    UIView * segContrlView = [[UIView alloc] initWithFrame:[self pinActionSegmentedControl].bounds];
+    [segContrlView addSubview:[self pinActionSegmentedControl]];
+    UIBarButtonItem *segBtn = [[UIBarButtonItem alloc] initWithCustomView:segContrlView];
+    
+    
+    upperToolbar = [[UIToolbar  alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width-20, 33)];
+    
+    flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    [upperToolbar setItems:[NSArray arrayWithObjects:searchButton,flexibleSpace, segBtn,flexibleSpace,listButton, nil]];
+    upperToolbarView = [[UIView alloc] initWithFrame:CGRectMake(0, 22, self.view.bounds.size.width-20, 33)];
+    upperToolbarView.backgroundColor = [UIColor clearColor];
+    
+    [upperToolbarView addSubview:upperToolbar];
+    self.navigationItem.titleView  =upperToolbarView;
+    
+    
+    [self setToolbarItems:[NSArray arrayWithObjects:currentLocationButton, flexibleSpace, mappingModeButton, flexibleSpace, measControlButton, flexibleSpace, optionsMenuButton, nil]];
+    
     
     [self loadToolbar];
-
+    
     UIColor *defaultBlueColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.6];
     
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+    //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
     // self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     // self.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
     self.navigationController.toolbar.tintColor = defaultBlueColor;
     self.navigationController.navigationBar.tintColor = defaultBlueColor;
     
-    // UIColor *defaultBlueColor = [UIColor colorWithHue:0.6 saturation:0.33 brightness:0.69 alpha:1];  
-
+    // UIColor *defaultBlueColor = [UIColor colorWithHue:0.6 saturation:0.33 brightness:0.69 alpha:1];
+    
     // todo: put border around the view
     
     if ([appDelegate iPad]) {
@@ -337,20 +362,20 @@
         messageViewSize = CGSizeMake(320, 60);
     }
     
-    self.messageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, messageViewSize.width, messageViewSize.height)]; 
-    [messageView setBackgroundColor:defaultBlueColor]; 
+    self.messageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, messageViewSize.width, messageViewSize.height)];
+    [messageView setBackgroundColor:defaultBlueColor];
     //[self.messageView setBackgroundColor:[UIColor lightGrayColor]];
     [self.messageView setAlpha:0.8];
     [self.view addSubview:self.messageView];
     
     messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, messageViewSize.width, messageViewSize.height)];
     [messageLabel setFont:[UIFont boldSystemFontOfSize:18]];
-    [messageLabel setTextAlignment:UITextAlignmentCenter];
+    [messageLabel setTextAlignment:NSTextAlignmentCenter];
     [messageLabel setBackgroundColor:[UIColor clearColor]];
     [messageLabel setTextColor:[UIColor whiteColor]];
     [messageLabel setText:@"message bar text"];
     messageLabel.adjustsFontSizeToFitWidth = YES;
-    messageLabel.minimumFontSize = 5; 
+    messageLabel.minimumScaleFactor = 5;
     messageLabel.numberOfLines = 5;
     [self.messageView addSubview:messageLabel];
     [self.messageView addSubview:activityInd];
@@ -408,12 +433,12 @@
         mappingModeControl = [self mappingModeSegmentedControl];
         [mappingModeControl setSelectedSegmentIndex:0];
         mappingModeButton = [[UIBarButtonItem alloc] initWithCustomView:mappingModeControl];
-    }    
+    }
     
     // [self updateMappingMode];
     
     measSegmentedControl = [self measureSegmentedControl];
-    measSegmentedControl.selectedSegmentIndex = appDelegate.measModel.mode; 
+    measSegmentedControl.selectedSegmentIndex = appDelegate.measModel.mode;
     measControlButton = [[UIBarButtonItem alloc] initWithCustomView:measSegmentedControl];
     
     hybridPathTypeSegmentedControl = [self hybridSegmentedControl];
@@ -421,15 +446,15 @@
     hybridPathTypeSegmentedControl.tintColor = [UIColor grayColor];
     
     /*
-    UISegmentedControl *pinSegmentedControl = [self pinActionSegmentedControl];
-    UIBarButtonItem *pinControlButton = [[UIBarButtonItem alloc] initWithCustomView:pinSegmentedControl];
-    */
+     UISegmentedControl *pinSegmentedControl = [self pinActionSegmentedControl];
+     UIBarButtonItem *pinControlButton = [[UIBarButtonItem alloc] initWithCustomView:pinSegmentedControl];
+     */
     
     if ([appDelegate iPad] == YES) {
         activityInd = [self activityIndicator:CGRectMake(370, 20, 25, 25)];
     }
     else {
-        activityInd = [self activityIndicator:CGRectMake(150, 20, 25, 25)];  
+        activityInd = [self activityIndicator:CGRectMake(150, 20, 25, 25)];
     }
     
     [self setToolbarItems:[NSArray arrayWithObjects:currentLocationButton, flexibleSpace, mappingModeButton, flexibleSpace, measControlButton, flexibleSpace, optionsMenuButton, nil]];
@@ -437,7 +462,7 @@
     [flexibleSpace release];
     
     BOOL alwaysShowLicense = NO;
-    if (alwaysShowLicense || [[NSUserDefaults standardUserDefaults] boolForKey:@"showLicense"] == YES) {        
+    if (alwaysShowLicense || [[NSUserDefaults standardUserDefaults] boolForKey:@"showLicense"] == YES) {
         [self presentLicenseAgreement];
     }
 }
@@ -448,12 +473,12 @@
     
     if ([appDelegate iPad] == YES) {
         license.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self presentModalViewController:license animated:NO];
+        [self presentViewController:license animated:NO completion:nil];
         license.view.superview.frame = CGRectMake(0, 0, 320, 480);
         license.view.superview.center = self.view.center;
     }
     else {
-        [self presentModalViewController:license animated:NO];
+        [self presentViewController:license animated:NO completion:nil];
     }
     
     [license release];
@@ -505,7 +530,7 @@
 -(void) setTrackLocationTimer {
     
     BOOL trackLocationVal = [[NSUserDefaults standardUserDefaults] boolForKey:@"trackLocation"];
-    NSLog(@"trackLocationVal: %d", trackLocationVal);    
+    NSLog(@"trackLocationVal: %d", trackLocationVal);
     
     int intervalSecs = appDelegate.measModel.trackingSecs;
     if (trackLocationVal == YES) {
@@ -527,7 +552,7 @@
         [self.mapView setShowsUserLocation:YES];
         doneWaitingForLocationAquire = 1;
     }
-    else if (trackLocationTimer != nil ) {    
+    else if (trackLocationTimer != nil ) {
         [trackLocationTimer invalidate];
         trackLocationTimer = nil;
         [[ UIApplication sharedApplication ] setIdleTimerDisabled: NO ];
@@ -559,8 +584,7 @@
 
 -(UISegmentedControl *) hybridSegmentedControl {
     NSArray *measOptions = [[NSArray arrayWithObjects:@"Path", @"Line", nil] retain];
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:measOptions]; 
-    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:measOptions];
     [segmentedControl addTarget:self action:@selector(changeHybridType:) forControlEvents:UIControlEventValueChanged];
     segmentedControl.selectedSegmentIndex = 0; // select route by default
     return [segmentedControl autorelease];
@@ -583,18 +607,17 @@
         default:
             break;
     }
-//    [self updateMessageBar];
+    //    [self updateMessageBar];
 }
 
 # pragma mark measure mode segmented control for toolbar
 
 -(UISegmentedControl *) measureSegmentedControl {
     //NSArray *measOptions = [[NSArray arrayWithObjects:@"Distance", @"Area", nil] retain];
-    //UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:measOptions]; 
+    //UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:measOptions];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:nil];
     [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"distance.png"] atIndex:0 animated:NO];
     [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"area.png"] atIndex:1 animated:NO];
-    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     [segmentedControl addTarget:self action:@selector(changeMeasType:) forControlEvents:UIControlEventValueChanged];
     segmentedControl.selectedSegmentIndex = 0; // select distance by default
     segmentedControl.tintColor = [UIColor grayColor];
@@ -623,8 +646,8 @@
 
 -(UISegmentedControl *) mappingModeSegmentedControl {
     NSArray *mappingOptions = [[NSArray arrayWithObjects:@"Measure", @"Route", nil] retain];
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:mappingOptions]; 
-    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:mappingOptions];
+
     segmentedControl.tintColor = [UIColor grayColor];
     [segmentedControl addTarget:self action:@selector(switchMappingMode:) forControlEvents:UIControlEventValueChanged];
     return [segmentedControl autorelease];
@@ -657,7 +680,7 @@
         appDelegate.measModel.mappingMode = MAP_MODE_MEAS;
     }
     else if (appDelegate.measModel.mappingMode == MAP_MODE_MEAS) {
-        appDelegate.measModel.mappingMode = MAP_MODE_HYBRID; 
+        appDelegate.measModel.mappingMode = MAP_MODE_HYBRID;
     }
     
     // NSLog(@"new mappingMode: %d", appDelegate.measModel.mappingMode);
@@ -670,7 +693,7 @@
             // self.messageLabel.text = [NSString stringWithFormat:@"In Measurement Mode \n (for area and distance)"];
             break;
         case MAP_MODE_HYBRID:
-            mappingModeStr = @"Route";       
+            mappingModeStr = @"Route";
             [self setToolbarItems:[NSArray arrayWithObjects:currentLocationButton, flexibleSpace, mappingModeButton, flexibleSpace, hybridPathTypeButton, flexibleSpace, optionsMenuButton, nil]];
             // self.messageLabel.text = @"In Route Mode: lay down paths or lines";
             break;
@@ -683,14 +706,13 @@
 # pragma mark redo, undo, and erase buttons
 -(UISegmentedControl *) pinActionSegmentedControl {
     //NSArray *pinOptions = [[NSArray arrayWithObjects:@"Undo", @"Redo", @"Clear", nil] retain];
-    // UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:pinOptions]; 
+    // UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:pinOptions];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:nil];
     [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"do.png"] atIndex:0 animated:NO];
     [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"redo.png"] atIndex:1 animated:NO];
     [segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"clearall.png"] atIndex:2 animated:NO];
-    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     [segmentedControl addTarget:self action:@selector(doPinAction:) forControlEvents:UIControlEventValueChanged];
-    segmentedControl.momentary = YES; 
+    segmentedControl.momentary = YES;
     return [segmentedControl autorelease];
 }
 
@@ -717,7 +739,7 @@
                 [appDelegate.measModel.erasedPoints addObject:lastAnnot];
                 [self.mapView removeAnnotation:lastAnnot];
                 [appDelegate.measModel.coordinatePoints removeLastObject];
-            }            
+            }
             
             [appDelegate.measModel updateTotalDistance];
             
@@ -727,7 +749,7 @@
             else if (appDelegate.measModel.mode == 0) {
                 [self drawCurrentPolyline];
             }
-            break;            
+            break;
         case 1:
             NSLog(@"redo last annotation");
             if ([appDelegate.measModel.erasedPoints count] > 0) {
@@ -796,7 +818,7 @@
         // [self.mapView removeOverlay:lastRouteLine];
         
         [self.mapView removeOverlay:lastAnnot.lineFromPrevPoint];
-    }  
+    }
 }
 
 -(void) redoLastRoutePin {
@@ -842,13 +864,13 @@
 -(void) mapClearAllRoutes {
     
     /*
-    NSMutableArray *points;
-    if (appDelegate.measModel.mappingMode == 1) {
-        points = appDelegate.measModel.routePoints;
-    }
-    else if (appDelegate.measModel.mappingMode == MAP_MODE_HYBRID) {
-        points = appDelegate.measModel.hybridPoints;
-    }
+     NSMutableArray *points;
+     if (appDelegate.measModel.mappingMode == 1) {
+     points = appDelegate.measModel.routePoints;
+     }
+     else if (appDelegate.measModel.mappingMode == MAP_MODE_HYBRID) {
+     points = appDelegate.measModel.hybridPoints;
+     }
      */
     
     NSMutableArray *points = appDelegate.measModel.hybridPoints;
@@ -865,9 +887,9 @@
     }
     
     /*
-    for (MKPolyline *line in appDelegate.measModel.routeLines) {
-        [self.mapView removeOverlay:line];
-    }
+     for (MKPolyline *line in appDelegate.measModel.routeLines) {
+     [self.mapView removeOverlay:line];
+     }
      */
     
     [points removeAllObjects];
@@ -938,21 +960,21 @@
 {
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
         return;
-
-    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];   
+    
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
     
     [self addPointToMap:touchPoint];
 }
 
 
 # pragma mark adding annotations
--(void) addPointToMap:(CGPoint ) touchPoint 
+-(void) addPointToMap:(CGPoint ) touchPoint
 {
-    CLLocationCoordinate2D touchMapCoordinate = 
+    CLLocationCoordinate2D touchMapCoordinate =
     [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
     MapPoint *annot = [[MapPoint alloc] initWithCoordinate:touchMapCoordinate title:@"tap coordinate"  subtitle:@"subtitle"];
-
+    
     if (appDelegate.measModel.mappingMode == MAP_MODE_MEAS) {
         [self addAnnotationToMap:annot];
     }
@@ -989,8 +1011,8 @@
     
     [self updateMessageBarRoute:routeLineVal];
 }
- 
--(void) addAnnotationToMap:(MapPoint *) annot 
+
+-(void) addAnnotationToMap:(MapPoint *) annot
 {
     annot.mappingModeWhenPlaced = MAP_MODE_MEAS;
     annot.pathTypeFromPrevPoint = HYBRID_PATH_LINE;
@@ -1007,7 +1029,7 @@
     int originalMapMode = appDelegate.measModel.mappingMode;
     int pinMapMode = annot.mappingModeWhenPlaced;
     
-    if (pinMapMode == MAP_MODE_MEAS) {        
+    if (pinMapMode == MAP_MODE_MEAS) {
         [self updateMappingModeTo:MAP_MODE_MEAS];
         [self deleteMeasureAnnotation:annot];
     }
@@ -1024,22 +1046,22 @@
     // remove from coordinatePoints
     [appDelegate.measModel.coordinatePoints removeObject:annot];
     
-    // remove from map 
+    // remove from map
     [self.mapView removeAnnotation:annot];
-
+    
     // update the drawing and annotation titles
     [self updateMeasureModeOverlaysAndAnnotations];
 }
 
 -(void) updateMeasureModeOverlaysAndAnnotations {
     if (appDelegate.measModel.mode == 0) {
-        [self drawCurrentPolyline];            
+        [self drawCurrentPolyline];
     }
     else if (appDelegate.measModel.mode == 1) {
         [self drawCurrentPolygon];
-    }        
+    }
     
-    [appDelegate.measModel updateTotalDistance];    
+    [appDelegate.measModel updateTotalDistance];
     [self updateAllAnnotations];
     [self updateMessageBar];
 }
@@ -1090,8 +1112,8 @@
     int numHybridPts = [appDelegate.measModel.hybridPoints count];
     
     if (numHybridPts <= 1) {
-        [self updateAllAnnotations];        
-        [self updateMessageBar];        
+        [self updateAllAnnotations];
+        [self updateMessageBar];
         return;
     }
     
@@ -1103,7 +1125,7 @@
     MKPolyline *lineToNext = nil;
     
     if (ind == numHybridPts-1) {
-        // prevPoint = [appDelegate.measModel.hybridPoints objectAtIndex:(ind-1)]; 
+        // prevPoint = [appDelegate.measModel.hybridPoints objectAtIndex:(ind-1)];
         lineFromPrev = annot.lineFromPrevPoint;
     }
     else if (ind == 0) {
@@ -1116,7 +1138,7 @@
         lineFromPrev = annot.lineFromPrevPoint;
         lineToNext = nextPoint.lineFromPrevPoint;
     }
-
+    
     // save hybridPathMode
     int hybridPathModeOriginal = appDelegate.measModel.hybridPathMode;
     
@@ -1178,7 +1200,7 @@
     [self updateAnnotationTitle:annot];
 }
 
--(void) updateAnnotationTitle:(MapPoint *) annot {    
+-(void) updateAnnotationTitle:(MapPoint *) annot {
     
     // NSArray *points = [self getPointsForMode];
     NSArray *points = [appDelegate.measModel getPointsForMode];
@@ -1187,29 +1209,29 @@
     
     NSLog(@"updateAnnotationTitle::annotInd: %d, numPointsForMode: %d", annotInd, [points count]);
     
-    NSString *latLon = [appDelegate.measModel getLatLonStr:annot.coordinate.latitude longitude:annot.coordinate.longitude shortVersion:1]; 
+    NSString *latLon = [appDelegate.measModel getLatLonStr:annot.coordinate.latitude longitude:annot.coordinate.longitude shortVersion:1];
     
-    NSString *newTitle = [NSString stringWithFormat:@"%@", latLon]; 
+    NSString *newTitle = [NSString stringWithFormat:@"%@", latLon];
     
     NSString *newSubtitle;
     
     if (annotInd == 0) {
         newSubtitle = [NSString stringWithFormat:@"%d:: starting point", annotInd+1];
     }
-    else {        
+    else {
         double totalDist = [appDelegate.measModel convertDistance:annot.totalDistanceMeters power:1];
         double deltaDist = [appDelegate.measModel convertDistance:annot.deltaDistanceMeters power:1];
-                
+        
         NSString *unitStr = [appDelegate.measModel getUnitStr];
-        newSubtitle = [NSString stringWithFormat:@"%d:: ∑: %.2f %@, Δ: %.2f %@", annotInd+1, totalDist, unitStr, deltaDist, unitStr]; 
+        newSubtitle = [NSString stringWithFormat:@"%d:: ∑: %.2f %@, Δ: %.2f %@", annotInd+1, totalDist, unitStr, deltaDist, unitStr];
         
         // NSLog(@"inside else:: title: %@, subtitle: %@", newTitle, newSubtitle);
     }
     
     NSLog(@"title: %@, subtitle: %@", newTitle, newSubtitle);
     
-    annot.title = newTitle;     
-    annot.subtitle = newSubtitle; 
+    annot.title = newTitle;
+    annot.subtitle = newSubtitle;
     
 }
 
@@ -1224,7 +1246,7 @@
     
     
     [self updateMappingModeTo:MAP_MODE_HYBRID];
-    double accumPathDist = 0;    
+    double accumPathDist = 0;
     for (MapPoint *annot in appDelegate.measModel.hybridPoints) {
         accumPathDist += annot.deltaDistanceMeters;
         annot.totalDistanceMeters = accumPathDist;
@@ -1234,8 +1256,8 @@
     [self updateMappingModeTo:originalMappingMode];
     
     MKUserLocation *blueDot = [self.mapView userLocation];
-        
-    [blueDot setTitle:[appDelegate.measModel getLatLonStr:blueDot.coordinate.latitude longitude:blueDot.coordinate.longitude shortVersion:1]];    
+    
+    [blueDot setTitle:[appDelegate.measModel getLatLonStr:blueDot.coordinate.latitude longitude:blueDot.coordinate.longitude shortVersion:1]];
     [blueDot setSubtitle:@"current location"];
 }
 
@@ -1269,11 +1291,11 @@
     oldAnnot = [appDelegate.measModel.hybridPoints objectAtIndex:annotInd-1];
     double dist = [appDelegate.measModel distanceBetweenMapPoints:annot oldMapPoint:oldAnnot];
     
-    CLLocationCoordinate2D coordinatesToDraw[2]; 
+    CLLocationCoordinate2D coordinatesToDraw[2];
     coordinatesToDraw[0] = [oldAnnot coordinate];
     coordinatesToDraw[1] = [annot coordinate];
     
-    MKPolyline *line = [MKPolyline polylineWithCoordinates:coordinatesToDraw count:2]; 
+    MKPolyline *line = [MKPolyline polylineWithCoordinates:coordinatesToDraw count:2];
     
     annot.deltaDistanceMeters = dist;
     annot.lineFromPrevPoint = line;
@@ -1283,7 +1305,7 @@
     for (MapPoint *prevPoint in appDelegate.measModel.hybridPoints) {
         accumDist += prevPoint.deltaDistanceMeters;
         prevPoint.totalDistanceMeters = accumDist;
-    }    
+    }
     // annot.totalDistanceMeters = accumDist + dist;
     
     
@@ -1307,13 +1329,13 @@
     if (numPoints <= 1)
         return;
     
-    CLLocationCoordinate2D coordinatesToDraw[numPoints]; 
+    CLLocationCoordinate2D coordinatesToDraw[numPoints];
     
     for (int i=0; i<numPoints; i++) {
         coordinatesToDraw[i] = [[appDelegate.measModel.coordinatePoints objectAtIndex:i] coordinate];
     }
     
-    MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinatesToDraw count:numPoints]; 
+    MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinatesToDraw count:numPoints];
     
     appDelegate.measModel.currentPolyline = polyline;
     
@@ -1337,11 +1359,11 @@
         coordinatesToDraw[i] = [annot coordinate];
         i++;
     }
-    MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinatesToDraw count:numCoordinates]; 
+    MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinatesToDraw count:numCoordinates];
     [self.mapView addOverlay:polygon];
     
     // put into measModel as current polygon
-    appDelegate.measModel.currentPolygon = polygon; 
+    appDelegate.measModel.currentPolygon = polygon;
 }
 
 # pragma mark line drawing for measure mode
@@ -1351,9 +1373,9 @@
 }
 
 // *** update this part ***
--(int) drawCurrentRouteLineWithActivity:(MapPoint *)newRoutePoint isNewPoint:(int)isNewPoint withActivity:(int)withActivity { 
-    if (withActivity == 1) {            
-        routeBlockDone = 0;        
+-(int) drawCurrentRouteLineWithActivity:(MapPoint *)newRoutePoint isNewPoint:(int)isNewPoint withActivity:(int)withActivity {
+    if (withActivity == 1) {
+        routeBlockDone = 0;
         block_t annotationBlock = ^{
             NSLog(@"running drawCurrentRouteLine");
             currentRouteLineReturnVal = [self drawCurrentRouteLine:newRoutePoint isNewPoint:isNewPoint];
@@ -1364,25 +1386,25 @@
         NSLog(@"return value from drawCurrentRouteLine outside block: %d", currentRouteLineReturnVal);
         
         /*
-        while (routeBlockDone != 1) {
-            // block
-        }
-        routeBlockDone = 0;
-        */
-        
-        return currentRouteLineReturnVal;      
-         
-        
-        /*
-        [self.activityInd startAnimating];
-        self.messageLabel.hidden = YES;
-        
-        currentRouteLineReturnVal = [self drawCurrentRouteLine:newRoutePoint isNewPoint:isNewPoint];
-        
-        [self.activityInd stopAnimating];
-        self.messageLabel.hidden = NO;
+         while (routeBlockDone != 1) {
+         // block
+         }
+         routeBlockDone = 0;
+         */
         
         return currentRouteLineReturnVal;
+        
+        
+        /*
+         [self.activityInd startAnimating];
+         self.messageLabel.hidden = YES;
+         
+         currentRouteLineReturnVal = [self drawCurrentRouteLine:newRoutePoint isNewPoint:isNewPoint];
+         
+         [self.activityInd stopAnimating];
+         self.messageLabel.hidden = NO;
+         
+         return currentRouteLineReturnVal;
          */
     }
     else {
@@ -1392,7 +1414,7 @@
 
 // think about consolidating with drawNewPolyline
 
--(int) drawCurrentRouteLine:(MapPoint *)newRoutePoint isNewPoint:(int)isNewPoint {   
+-(int) drawCurrentRouteLine:(MapPoint *)newRoutePoint isNewPoint:(int)isNewPoint {
     int mappingMode = appDelegate.measModel.mappingMode;
     NSMutableArray *points = nil;
     if (mappingMode == 1) {
@@ -1435,7 +1457,7 @@
         }
         else {
             // if the index is not 0, the oldRoutePoint is the previous point
-            oldRoutePoint = [points objectAtIndex:pointInd-1];    
+            oldRoutePoint = [points objectAtIndex:pointInd-1];
         }
     }
     
@@ -1460,7 +1482,7 @@
     }
     
     // update and accumulate total distance for each point
-    double accumPathDist = 0;    
+    double accumPathDist = 0;
     for (MapPoint *prevRoutePoint in points) {
         accumPathDist += prevRoutePoint.deltaDistanceMeters;
         prevRoutePoint.totalDistanceMeters = accumPathDist;
@@ -1498,17 +1520,17 @@
     
     if ([overlay isKindOfClass:[MKPolygon class]])
         
-    {        
+    {
         MKPolygonView* aView = [[[MKPolygonView alloc] initWithPolygon:(MKPolygon*)overlay] autorelease];
         
-        aView.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];        
-        aView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];        
+        aView.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
+        aView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
         aView.lineWidth = 3;
         
-        return aView;        
+        return aView;
     }
-
-	return [[[MKOverlayView alloc] initWithOverlay:overlay] autorelease];	
+    
+	return [[[MKOverlayView alloc] initWithOverlay:overlay] autorelease];
 }
 
 # pragma mark update message bar
@@ -1524,7 +1546,7 @@
     int numCoordinates = [points count];
     NSString *str;
     if (result == -1) {
-        messageLabel.text = @"no route found"; 
+        messageLabel.text = @"no route found";
         return;
     }
     else if (numCoordinates == 0) {
@@ -1540,7 +1562,7 @@
     
     double totalDist = [[points lastObject] totalDistanceMeters];
     NSString *totalStr = @"Route total distance: ";
-    totalStr = [totalStr stringByAppendingFormat:[appDelegate.measModel getConvertedDistanceStr:totalDist]];
+    totalStr = [totalStr stringByAppendingFormat:@"%@",[appDelegate.measModel getConvertedDistanceStr:totalDist]];
     
     [self.messageLabel setText:totalStr];
 }
@@ -1559,18 +1581,18 @@
     if (numCoordinates == 0) {
         NSString *str = [NSString stringWithFormat:@"Press and hold to drop a pin"];
         [self.messageLabel setText:str];
-        return; 
+        return;
     }
     
     if (numCoordinates == 1) {
         NSString *str = [NSString stringWithFormat:@"To move a pin, select it, then drag to place at pin's tip"];
         [self.messageLabel setText:str];
-        return; 
+        return;
     }
     
-    double convertedDist = 0; 
+    double convertedDist = 0;
     NSString *unitStr;
-    if (appDelegate.measModel.mode == 0) {        
+    if (appDelegate.measModel.mode == 0) {
         // convertedDist = appDelegate.measModel.accumDistanceMeters;
         // convertedDist = [appDelegate.measModel accumDistanceMetersForAnnot:[appDelegate.measModel.coordinatePoints lastObject]];
         convertedDist = [[appDelegate.measModel.coordinatePoints lastObject] totalDistanceMeters];
@@ -1584,7 +1606,7 @@
     
     NSString *totalStr = nil;
     if (appDelegate.measModel.mode == 0) {
-        // distance mode        
+        // distance mode
         convertedDist = [appDelegate.measModel convertDistance:convertedDist power:1];
         if (appDelegate.measModel.unitSelection <= 4) {
             totalStr = [NSString stringWithFormat:@"Total Distance: %.2f %@", convertedDist, unitStr];
@@ -1615,15 +1637,13 @@
     
     if (searchBar == nil) {
         
-        searchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)] autorelease];
+        searchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 65)] autorelease];
         searchBar.delegate = self;
         
         [searchBar setShowsCancelButton:YES animated:YES];
-        searchBar.placeholder = @"Search or address"; 
+        searchBar.placeholder = @"Search or address";
         
         [searchBar becomeFirstResponder];
-        
-        searchBar.barStyle = UIBarStyleBlackOpaque;
         
         searchBarView = [[[UIView alloc] initWithFrame:searchBar.frame] autorelease];
         [searchBarView addSubview:searchBar];
@@ -1637,18 +1657,18 @@
     recognizer.enabled = YES;
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+- (void)searchBarCancelButtonClicked:(UISearchBar *)aSearchBar {
     //NSLog(@"search bar cancel pressed");
-    [searchBar resignFirstResponder];
+    [aSearchBar resignFirstResponder];
     [self showNavigationAndMessageBars];
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+- (void)searchBarSearchButtonClicked:(UISearchBar *)aSearchBar {
     //NSLog(@"search for text: %@", searchBar.text);
-    [searchBar resignFirstResponder];
+    [aSearchBar resignFirstResponder];
     [self showNavigationAndMessageBars];
     //NSLog(@"search still contains text: %@", searchBar.text);
-    CLLocationCoordinate2D searchLocation = [self addressLocation];
+    //CLLocationCoordinate2D searchLocation = [self addressLocation];
 }
 
 - (void) showNavigationAndMessageBars {
@@ -1659,7 +1679,7 @@
     // messageViewOnScreen = 1;
     // [self toggleMessageViewTo:1];
     
-    recognizer.enabled = NO; 
+    recognizer.enabled = NO;
 }
 
 # pragma mark searching for address
@@ -1681,7 +1701,7 @@
 
 -(CLLocationCoordinate2D) addressLocation {
     NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv", [searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString]];
+    NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] usedEncoding:NSUTF8StringEncoding error:nil];
     NSArray *listItems = [locationString componentsSeparatedByString:@","];
     
     double latitude = 0.0;
@@ -1737,25 +1757,18 @@
 
 # pragma mark KML parser
 
-- (NSString *)dataFilePath { 
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
-    NSString *documentsDirectory = [paths objectAtIndex:0]; 
-    //NSString *file = @"testWrite.kml";
-    // return [documentsDirectory stringByAppendingPathComponent:file];
-    
-    // NSLog(@"controller: %@", appDelegate.kmlManager.filePathToLoad);
-    
+- (NSString *)dataFilePath {
     return appDelegate.kmlManager.filePathToLoad;
 }
 
 -(void) writeKMLFile {
-    KMLWriter *writer = [[KMLWriter alloc] init];
-    NSData *data = [writer xmlDataFromRequest];
-    [writer release];
+    //KMLWriter *writer = [[KMLWriter alloc] init];
+    //NSData *data = [writer xmlDataFromRequest];
+    //[writer release];
 }
 
 -(void) loadKML {
-
+    
     NSString *path = [self dataFilePath];
     kml = [[KMLParser parseKMLAtPath:path] retain];
     
@@ -1784,10 +1797,10 @@
         NSArray *nums = [ptName componentsSeparatedByString:@","];
         
         /*
-        if ([nums count] < 3) {
-            continue;
-        }
-        */
+         if ([nums count] < 3) {
+         continue;
+         }
+         */
         
         CLLocationCoordinate2D coord = [[annotations objectAtIndex:i] coordinate];
         MapPoint *annot = [[[MapPoint alloc] initWithCoordinate:coord title:@"tap coordinate"  subtitle:@"subtitle"] autorelease];
@@ -1801,7 +1814,7 @@
             annot.pathTypeFromPrevPoint = [[nums objectAtIndex:2] integerValue];
         }
         
-        if (annot.mappingModeWhenPlaced == MAP_MODE_MEAS) {            
+        if (annot.mappingModeWhenPlaced == MAP_MODE_MEAS) {
             [measurePoints addObject:annot];
         }
         else if (annot.mappingModeWhenPlaced == MAP_MODE_HYBRID) {
@@ -1839,15 +1852,15 @@
     
     MKMapRect flyTo = MKMapRectNull;
     /*
-    for (id <MKOverlay> overlay in overlays) {
-        if (MKMapRectIsNull(flyTo)) {
-            flyTo = [overlay boundingMapRect];
-        } else {
-            flyTo = MKMapRectUnion(flyTo, [overlay boundingMapRect]);
-        }
-    }
+     for (id <MKOverlay> overlay in overlays) {
+     if (MKMapRectIsNull(flyTo)) {
+     flyTo = [overlay boundingMapRect];
+     } else {
+     flyTo = MKMapRectUnion(flyTo, [overlay boundingMapRect]);
+     }
+     }
      */
-     
+    
     
     for (id <MKAnnotation> annotation in annotations) {
         MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
@@ -1861,7 +1874,7 @@
     
     // Position the map so that all overlays and annotations are visible on screen.
     self.mapView.visibleMapRect = flyTo;
-
+    
 }
 
 # pragma mark button presses
@@ -1877,12 +1890,12 @@
     
     if ([appDelegate iPad] == YES) {
         instructions.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self presentModalViewController:instructions animated:YES];
+        [self presentViewController:instructions animated:YES completion:nil];
         instructions.view.superview.frame = CGRectMake(0, 0, 320, 461);
         instructions.view.superview.center = self.view.center;
     }
     else {
-        [self presentModalViewController:instructions animated:YES];
+        [self presentViewController:instructions animated:YES completion:nil];
     }
     
     [instructions release];
@@ -1903,9 +1916,9 @@
     
     // NSLog(@"2 toggle message view:: messageViewOnScreen: %d", messageViewOnScreen);
     
-    [UIView animateWithDuration:0.5 
-                          delay:0.0 
-                        options:UIViewAnimationCurveEaseInOut 
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseInOut
                      animations:^{
                          // messageView.hidden = !messageView.hidden;
                          if (messageViewOnScreen == 1) {
@@ -1914,12 +1927,12 @@
                          else {
                              [messageView setFrame:CGRectMake(0, -60, messageViewSize.width, messageViewSize.height)];
                          }
-                     } 
+                     }
                      completion:nil];
     
     
-    [UIView animateWithDuration:0.5 
-                          delay:0.0 
+    [UIView animateWithDuration:0.5
+                          delay:0.0
                         options:UIViewAnimationCurveEaseInOut
                      animations:^{
                          if (messageViewOnScreen == 1) {
@@ -1931,7 +1944,7 @@
                              [toggleButton setFrame:CGRectMake(toggleButtonLocation.x, 0, toggleButtonSize.width, toggleButtonSize.height)];
                          }
                      }
-                     completion:nil];    
+                     completion:nil];
 }
 
 -(void) testSearch {
@@ -1951,10 +1964,10 @@
     }
 }
 
--(void) gotoCurrentLocation {    
+-(void) gotoCurrentLocation {
     NSLog(@"start updating location");
     [locationManager startUpdatingLocation];
-   // lookingForLocation = 1;
+    // lookingForLocation = 1;
     
     if (coreLocationFailed == 0) {
         self.messageLabel.hidden = YES;
@@ -1962,7 +1975,7 @@
         [activityInd startAnimating];
     }
     else {
-        messageLabel.text = @"current location not available"; 
+        messageLabel.text = @"current location not available";
     }
     
     
@@ -1972,16 +1985,16 @@
         
         [self.mapView setShowsUserLocation:YES];
         waitForCurrentLocationTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(doneWaiting) userInfo:nil repeats:NO];
-        // sleep(3);        
+        // sleep(3);
     }
     else {
         NSLog(@"pan to current location");
         [self.mapView setShowsUserLocation:YES];
     }
-     
     
-    // NSLog(@"pan to current location");
-    // [self.mapView setShowsUserLocation:YES];
+    
+     NSLog(@"pan to current location");
+     [self.mapView setShowsUserLocation:YES];
 }
 
 -(void) doneWaiting {
@@ -1992,47 +2005,40 @@
 }
 
 -(void) openOptionsMenu {
-    NSLog(@"options button pressed");
+    if (optionsPopoverOn == 1) {
+        [self dismissOptionsPopoverController];
+    }
+    
     Options *optionsViewController = [[Options alloc] initWithNibName:@"Options" bundle:nil];
+    optionsViewController.delegate = self;
     
     if ([appDelegate iPad] == YES) {
         
-        if (optionsPopoverOn == 1) {
+        if (pinListPopoverOn == 1) {
             [optionsViewController release];
             // remember to release where necessary
-            // [self popoverControllerDidDismissPopover:NO];
-            [self dismissOptionsPopoverController];
+            [self.optionsPopover dismissPopoverAnimated:YES];
+            [self popoverControllerDidDismissPopover:optionsPopover];
             return;
         }
         
         optionsPopoverOn = 1;
-        [optionsViewController.view setBackgroundColor:[UIColor whiteColor]];
         
-        optionsViewController.delegate = self;
+        UINavigationController *optionListNav = [[UINavigationController alloc] initWithRootViewController:optionsViewController];
         
-        UINavigationController *popNav = [[UINavigationController alloc] initWithRootViewController:optionsViewController];
-        
-        //UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:optionsViewController];
-        
-        optionsPopover = [[UIPopoverController alloc] initWithContentViewController:popNav];
+        optionsPopover = [[UIPopoverController alloc] initWithContentViewController:optionListNav];
         
         [optionsPopover setPopoverContentSize:CGSizeMake(320, 960)];
         
-        optionsPopover.delegate = self;        
-        [optionsPopover presentPopoverFromBarButtonItem:optionsMenuButton
-                        permittedArrowDirections:UIPopoverArrowDirectionUp
-                                        animated:YES];                 
+        optionsPopover.delegate = self;
+        [optionsPopover presentPopoverFromBarButtonItem:listButton
+                               permittedArrowDirections:UIPopoverArrowDirectionUp
+                                               animated:YES];
     }
     else {
-        [self.navigationController setToolbarHidden:YES];
         [self.navigationController pushViewController:optionsViewController animated:YES];
     }
-     
-    // without iPad
-    /*
-    [self.navigationController setToolbarHidden:YES];
-    [self.navigationController pushViewController:optionsViewController animated:YES];
-     */
+    
     [optionsViewController release];
 }
 
@@ -2096,7 +2102,7 @@
         
         [pinListPopover setPopoverContentSize:CGSizeMake(320, 960)];
         
-        pinListPopover.delegate = self;        
+        pinListPopover.delegate = self;
         [pinListPopover presentPopoverFromBarButtonItem:listButton
                                permittedArrowDirections:UIPopoverArrowDirectionUp
                                                animated:YES];
@@ -2131,7 +2137,7 @@
         
         [detailPopover setPopoverContentSize:CGSizeMake(320, 960)];
         
-        detailPopover.delegate = self;        
+        detailPopover.delegate = self;
         [detailPopover presentPopoverFromBarButtonItem:listButton
                               permittedArrowDirections:UIPopoverArrowDirectionAny
                                               animated:YES];
@@ -2151,14 +2157,14 @@
 }
 
 /*
-- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
-    if (popoverController == pinListPopover) {
-        return YES;
-    }
-    else {
-        return YES;
-    }
-}
+ - (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
+ if (popoverController == pinListPopover) {
+ return YES;
+ }
+ else {
+ return YES;
+ }
+ }
  */
 
 # pragma mark stuff for zoom level
@@ -2186,7 +2192,7 @@
     return (M_PI / 2.0 - 2.0 * atan(exp((round(pixelY) - MERCATOR_OFFSET) / MERCATOR_RADIUS))) * 180.0 / M_PI;
 }
 
-- (MKCoordinateSpan)coordinateSpanWithMapView:(MKMapView *)mapView
+- (MKCoordinateSpan)coordinateSpanWithMapView:(MKMapView *)aMapView
                              centerCoordinate:(CLLocationCoordinate2D)centerCoordinate
                                  andZoomLevel:(NSUInteger)zoomLevel
 {
@@ -2199,7 +2205,7 @@
     double zoomScale = pow(2, zoomExponent);
     
     // scale the map’s size in pixel space
-    CGSize mapSizeInPixels = mapView.bounds.size;
+    CGSize mapSizeInPixels = aMapView.bounds.size;
     double scaledMapWidth = mapSizeInPixels.width * zoomScale;
     double scaledMapHeight = mapSizeInPixels.height * zoomScale;
     
@@ -2238,11 +2244,11 @@
 }
 
 /*
-- (void)setCentreCoordinate:(CLLocationCoordinate2D)centreCoordinate zoomScale:(double)zoomScale animated:(BOOL)animated
-{
-    [self.mapView setVisibleMapRect:[self mapRectWithCentreCoordinate:centreCoordinate zoomScale:zoomScale] animated:animated];
-}
-*/
+ - (void)setCentreCoordinate:(CLLocationCoordinate2D)centreCoordinate zoomScale:(double)zoomScale animated:(BOOL)animated
+ {
+ [self.mapView setVisibleMapRect:[self mapRectWithCentreCoordinate:centreCoordinate zoomScale:zoomScale] animated:animated];
+ }
+ */
 
 
 # pragma mark more view lifecycle stuff

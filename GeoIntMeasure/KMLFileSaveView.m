@@ -154,14 +154,14 @@
     NSLog(@"files array %@", filePathsArray);
     */
     NSArray *filePathsArray = [appDelegate.kmlManager filePathsArray];
-	int num = [filePathsArray count];
+	NSUInteger num = [filePathsArray count];
 	return num;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tblView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+	UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:
 							 SimpleTableIdentifier];
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc]

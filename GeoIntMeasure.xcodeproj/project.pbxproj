@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2802984C14F8184000868BBD /* instructionsCrop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2802984B14F8184000868BBD /* instructionsCrop@2x.png */; };
-		2802984E14F818EA00868BBD /* instructionsCrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 2802984D14F818EA00868BBD /* instructionsCrop.png */; };
 		2807CB9F1410843200351C5F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2807CB9E1410843200351C5F /* MapKit.framework */; };
 		2811A8F6147465E1004D1AF6 /* privacy.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2811A8F5147465E1004D1AF6 /* privacy.rtf */; };
 		2811A8F8147465EB004D1AF6 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2811A8F7147465EB004D1AF6 /* EULA.rtf */; };
@@ -79,12 +77,12 @@
 		28C79BD414303D4C00C8F5EB /* detailAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C79BD214303D4C00C8F5EB /* detailAnnotationView.xib */; };
 		28E0DB511419906600D94105 /* Options.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0DB4F1419906600D94105 /* Options.m */; };
 		28E0DB521419906600D94105 /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E0DB501419906600D94105 /* Options.xib */; };
+		C1637C4D180DA93D0027C536 /* instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = C1637C4B180DA93D0027C536 /* instructions.png */; };
+		C1637C4E180DA93D0027C536 /* instructions@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = C1637C4C180DA93D0027C536 /* instructions@2X.png */; };
 		F93D23D617FF18B10003DEC6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93D23D517FF18B10003DEC6 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2802984B14F8184000868BBD /* instructionsCrop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instructionsCrop@2x.png"; sourceTree = "<group>"; };
-		2802984D14F818EA00868BBD /* instructionsCrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructionsCrop.png; sourceTree = "<group>"; };
 		2807CB9E1410843200351C5F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2811A8F5147465E1004D1AF6 /* privacy.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = privacy.rtf; sourceTree = "<group>"; };
 		2811A8F7147465EB004D1AF6 /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = EULA.rtf; sourceTree = "<group>"; };
@@ -175,7 +173,9 @@
 		28E0DB4E1419906600D94105 /* Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Options.h; sourceTree = "<group>"; };
 		28E0DB4F1419906600D94105 /* Options.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Options.m; sourceTree = "<group>"; };
 		28E0DB501419906600D94105 /* Options.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Options.xib; sourceTree = "<group>"; };
-		F93D23D517FF18B10003DEC6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C1637C4B180DA93D0027C536 /* instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructions.png; sourceTree = "<group>"; };
+		C1637C4C180DA93D0027C536 /* instructions@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instructions@2X.png"; sourceTree = "<group>"; };
+		F93D23D517FF18B10003DEC6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,7 +207,6 @@
 		289DAAC7140F0FCD0031AF95 = {
 			isa = PBXGroup;
 			children = (
-				F93D23D517FF18B10003DEC6 /* Default-568h@2x.png */,
 				289DAADC140F0FCD0031AF95 /* GeoIntMeasure */,
 				289DAAD5140F0FCD0031AF95 /* Frameworks */,
 				289DAAD3140F0FCD0031AF95 /* Products */,
@@ -292,6 +291,9 @@
 		289DAADD140F0FCD0031AF95 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C1637C4B180DA93D0027C536 /* instructions.png */,
+				C1637C4C180DA93D0027C536 /* instructions@2X.png */,
+				F93D23D517FF18B10003DEC6 /* Default-568h@2x.png */,
 				2830ADF61434E3B4006A705E /* area.png */,
 				2830ADF71434E3B4006A705E /* area@2x.png */,
 				2830ADFA1434E3C2006A705E /* BottomNav.png */,
@@ -323,8 +325,6 @@
 				2885345F143831080041D0AD /* folder.png */,
 				28853461143831BE0041D0AD /* arrowup.png */,
 				28853463143831C80041D0AD /* arrowdown.png */,
-				2802984D14F818EA00868BBD /* instructionsCrop.png */,
-				2802984B14F8184000868BBD /* instructionsCrop@2x.png */,
 				2811A8F7147465EB004D1AF6 /* EULA.rtf */,
 				2811A8F5147465E1004D1AF6 /* privacy.rtf */,
 				289DAADE140F0FCD0031AF95 /* GeoIntMeasure-Info.plist */,
@@ -361,7 +361,7 @@
 		289DAAC9140F0FCD0031AF95 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 289DAACC140F0FCD0031AF95 /* Build configuration list for PBXProject "GeoIntMeasure" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -388,6 +388,7 @@
 				289DAAE1140F0FCD0031AF95 /* InfoPlist.strings in Resources */,
 				289DAAEA140F0FCD0031AF95 /* MainWindow.xib in Resources */,
 				289DAAF0140F0FCD0031AF95 /* GeoIntMeasureViewController.xib in Resources */,
+				C1637C4D180DA93D0027C536 /* instructions.png in Resources */,
 				28E0DB521419906600D94105 /* Options.xib in Resources */,
 				288ED4CC14295D6C0037902A /* KMLFileChooser.xib in Resources */,
 				288ED4D414298C050037902A /* KMLFileSaveView.xib in Resources */,
@@ -405,6 +406,7 @@
 				2830ADF91434E3B4006A705E /* area@2x.png in Resources */,
 				2830ADFB1434E3C2006A705E /* BottomNav.png in Resources */,
 				2830ADFD1434E3CB006A705E /* BottomNav@2x.png in Resources */,
+				C1637C4E180DA93D0027C536 /* instructions@2X.png in Resources */,
 				2830AE021434E3D8006A705E /* clearall.png in Resources */,
 				2830AE031434E3D8006A705E /* clearall@2x.png in Resources */,
 				2830AE041434E3D8006A705E /* distance.png in Resources */,
@@ -430,8 +432,6 @@
 				2825E5FE148D5337002BA08D /* Default-Landscape.png in Resources */,
 				2825E5FF148D5337002BA08D /* Default-Portrait.png in Resources */,
 				286A852614F72639006DE632 /* InstructionsController.xib in Resources */,
-				2802984C14F8184000868BBD /* instructionsCrop@2x.png in Resources */,
-				2802984E14F818EA00868BBD /* instructionsCrop.png in Resources */,
 				F93D23D617FF18B10003DEC6 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,7 +506,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -517,12 +516,13 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -531,16 +531,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -550,7 +549,7 @@
 		289DAAF4140F0FCD0031AF95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Yang (RV53T9WC24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Narges (HPXL3NCRET)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../directions framework\"",
@@ -559,9 +558,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeoIntMeasure/GeoIntMeasure-Prefix.pch";
 				INFOPLIST_FILE = "GeoIntMeasure/GeoIntMeasure-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B91E05F4-CF1E-4BFF-A500-50E00556FEC4";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = GeoIntMeasure;
+				PROVISIONING_PROFILE = "0328C540-4535-4682-8355-C1501B4086C2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -570,7 +569,7 @@
 		289DAAF5140F0FCD0031AF95 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Yang (RV53T9WC24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Narges (HPXL3NCRET)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../directions framework\"",
@@ -579,9 +578,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeoIntMeasure/GeoIntMeasure-Prefix.pch";
 				INFOPLIST_FILE = "GeoIntMeasure/GeoIntMeasure-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B91E05F4-CF1E-4BFF-A500-50E00556FEC4";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = GeoIntMeasure;
+				PROVISIONING_PROFILE = "0328C540-4535-4682-8355-C1501B4086C2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

@@ -36,9 +36,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSString *msg = [NSString stringWithString:@"The instruction screen for this app can be viewed by tapping the info button on the bottom right corner of the main map screen. \n\nThis application was created for the GEOINT 2011 Symposium, which takes place in San Antonio, TX. \n\nThe application was developed by: \nJason Loveland (Program Manager) and Paul Yang (Developer). \n\n"];
+    NSString *msg = @"The instruction screen for this app can be viewed by tapping the info button on the bottom right corner of the main map screen. \n\nThis application was created for the GEOINT 2011 Symposium, which takes place in San Antonio, TX. \n\nThe application was developed by: \nJason Loveland (Program Manager) and Paul Yang (Developer). \n\n";
     
-    NSString *icons = [NSString stringWithString:@"Application art and main icons by Zane Parker.  Other icons by Glyphish, (glyphish.com), and app-bits. \n\nNote: Calculations for polygons that contain self-intersecting areas (boundaries of polygon cross themselves) are not valid."];
+    NSString *icons = @"Application art and main icons by Zane Parker.  Other icons by Glyphish, (glyphish.com), and app-bits. \n\nNote: Calculations for polygons that contain self-intersecting areas (boundaries of polygon cross themselves) are not valid.";
     
     // NSString *msg2; 
  

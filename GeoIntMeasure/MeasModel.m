@@ -247,7 +247,7 @@
     // assume that it's an array of MapPoints
     double distanceMeters = 0;
     // CLLocationCoordinate2D
-    int numPoints = [locationPoints count];
+    NSUInteger numPoints = [locationPoints count];
     for (int i=1; i<numPoints; i++) {
         MapPoint *locOld = [locationPoints objectAtIndex:i-1];
         MapPoint *locNew = [locationPoints objectAtIndex:i];
@@ -258,7 +258,7 @@
 
 
 -(void) updateTotalDistance {
-    int numPoints = [coordinatePoints count];
+    NSUInteger numPoints = [coordinatePoints count];
     if (numPoints <= 1) {
         accumDistanceMeters = 0; 
         // deltaDistMeters = 0;
@@ -304,16 +304,16 @@
     
     MKPolyline *routeLine = [routeItems objectForKey:@"LM_MKPolylineKey"];
     NSArray *pointsForPolyline = [routeItems objectForKey:@"LM_PointsForPolylineKey"];
-    NSArray *turnLocations = [routeItems objectForKey:@"LM_TurnLocationsKey"];
+    //NSArray *turnLocations = [routeItems objectForKey:@"LM_TurnLocationsKey"];
     // NSArray *turnDirections = [routeItems objectForKey:@"LM_TurnByTurnKey"];
     NSArray *distances = [routeItems objectForKey:@"LM_DistancesKey"];
     
-    int runTestPoints = 0;
-    if (runTestPoints == 1) {
-        CLLocationCoordinate2D fromTest = CLLocationCoordinate2DMake(39.1108, -116.7633);
-        CLLocationCoordinate2D toTest = CLLocationCoordinate2DMake(30.5745, -97.5265);
-        NSDictionary *testItems = [dFinder getDirectionsFrom:fromTest To:toTest];
-    }
+    //int runTestPoints = 0;
+    //if (runTestPoints == 1) {
+    //    CLLocationCoordinate2D fromTest = CLLocationCoordinate2DMake(39.1108, -116.7633);
+    //    CLLocationCoordinate2D toTest = CLLocationCoordinate2DMake(30.5745, -97.5265);
+        //NSDictionary *testItems = [dFinder getDirectionsFrom:fromTest To:toTest];
+    //}
     
     if (routeLine == nil) {
         NSLog(@"routeLine is nil, exiting route distance calculation");
@@ -346,7 +346,7 @@
 
 
 -(double) accumDistanceMetersForAnnot:(MapPoint *) annot {
-    int annotIndex = [coordinatePoints indexOfObject:annot];
+    NSUInteger annotIndex = [coordinatePoints indexOfObject:annot];
     if (annotIndex == 0) {
         return 0;
     }
@@ -366,7 +366,7 @@
 
 - (double) currentArea {
     // take current coordinates and convert them to MKMapPoints
-    int numPoints = [coordinatePoints count];
+    NSUInteger numPoints = [coordinatePoints count];
     
     if (numPoints <= 2) {
         return 0;
@@ -417,7 +417,7 @@
 
 - (double) currentAreaPixel {
     // take current coordinates and convert them to MKMapPoints
-    int numPoints = [coordinatePoints count];
+    NSUInteger numPoints = [coordinatePoints count];
     
     if (numPoints <= 2) {
         return 0;

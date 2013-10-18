@@ -92,15 +92,15 @@
 
 -(UISegmentedControl *) mappingModeSegmentedControl {
     NSArray *mappingOptions = [[NSArray arrayWithObjects:@"Measure", @"Route", nil] retain];
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:mappingOptions]; 
-    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:mappingOptions];
+    [mappingOptions release];
     segmentedControl.tintColor = [UIColor grayColor];
     [segmentedControl addTarget:self action:@selector(switchMappingMode:) forControlEvents:UIControlEventValueChanged];
     return [segmentedControl autorelease];
 }
 
 -(void) switchMappingMode:(UISegmentedControl *) segmentedControl {
-    NSLog(@"switchMappingMode selected index: %d", segmentedControl.selectedSegmentIndex);
+    NSLog(@"switchMappingMode selected index: %ld", (long)segmentedControl.selectedSegmentIndex);
     
     int doUpdate = 0;
     if(segmentedControl.selectedSegmentIndex == 0 && appDelegate.measModel.mappingMode != MAP_MODE_MEAS) {
@@ -149,7 +149,7 @@
         cell = [[[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    int row = [indexPath row];
+    NSUInteger row = [indexPath row];
     
     MapPoint *mp = nil;
     if (appDelegate.measModel.mappingMode == MAP_MODE_MEAS) 
@@ -210,7 +210,7 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     
-    int row = [indexPath row];
+    NSUInteger row = [indexPath row];
     MapPoint *mp = nil;
     if (appDelegate.measModel.mappingMode == MAP_MODE_MEAS) 
         mp = [appDelegate.measModel.coordinatePoints objectAtIndex:row];

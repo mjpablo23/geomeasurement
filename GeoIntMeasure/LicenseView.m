@@ -62,7 +62,7 @@
 -(IBAction) buttonPressed:(id) sender {
     NSLog(@"buttonPressed 1");
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLicense"];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(IBAction) privacyButtonPressed:(id)sender {

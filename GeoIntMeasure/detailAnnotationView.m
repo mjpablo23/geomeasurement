@@ -67,7 +67,6 @@
     UIImage *down = [appDelegate.measModel imageWithImage:[UIImage imageNamed:@"arrowdown.png"] scaledToSize:CGSizeMake(20, 20)];
     [segmentedControl insertSegmentWithImage:down atIndex:0 animated:NO];
     [segmentedControl insertSegmentWithImage:up atIndex:1 animated:NO];
-    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     [segmentedControl addTarget:self action:@selector(doArrowAction:) forControlEvents:UIControlEventValueChanged];
     segmentedControl.momentary = YES; 
     return [segmentedControl autorelease];
@@ -83,7 +82,7 @@
     else
         points = appDelegate.measModel.hybridPoints;
     
-    int annotInd = [points indexOfObject:mp];
+    NSUInteger annotInd = [points indexOfObject:mp];
     int newAnnotFound = 0;
     
     // NSLog(@"current annotInd: %d", annotInd);
@@ -143,7 +142,7 @@
     BOOL getElevationVal = [[NSUserDefaults standardUserDefaults] boolForKey:@"getElevation"];
     NSString *elevationString = nil;
     if (getElevationVal == YES) {
-        elevationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString]];
+        elevationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil];
     }
     // NSLog(@"elevation string:\n %@", elevationString);
     double el = 0;
@@ -217,10 +216,10 @@
 	return [infoStrings count] / 2;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tblView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
               
     static NSString *CellIdentifier = @"Cell";
-    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CustomCell *cell = [tblView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
