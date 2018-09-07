@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
 #import "KMLWriter.h"
 
 @implementation KMLWriter
@@ -342,7 +343,7 @@
             _output = 0;
         } else {
             _output = (unsigned char *) xmlRealloc(_output, _outputSize + 1);
-            _output[_outputSize] = 0;  /*null terminating out */
+            _output[_outputSize] = 0;
         }
     } else {
         NSLog(@"convertInput: no memory\n");
@@ -352,3 +353,5 @@
 }
 
 @end
+
+*/

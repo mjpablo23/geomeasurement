@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
 #import <Foundation/Foundation.h>
 #import <libxml/encoding.h>
 #import <libxml/xmlwriter.h>
@@ -32,3 +33,4 @@
 -(void) writeAreaStyle:(NSString *) colorNameStr colorHex:(NSString *) colorHex writer:(xmlTextWriterPtr) _writer withEncoding:(const char *)_encoding;
 
 @end
+*/

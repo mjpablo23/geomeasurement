@@ -362,6 +362,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					289DAAD1140F0FCD0031AF95 = {
+						DevelopmentTeam = TM77C6T3NV;
+					};
+				};
 			};
 			buildConfigurationList = 289DAACC140F0FCD0031AF95 /* Build configuration list for PBXProject "GeoIntMeasure" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -549,7 +554,8 @@
 		289DAAF4140F0FCD0031AF95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Narges (HPXL3NCRET)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../directions framework\"",
@@ -560,7 +566,7 @@
 				INFOPLIST_FILE = "GeoIntMeasure/GeoIntMeasure-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = GeoIntMeasure;
-				PROVISIONING_PROFILE = "0328C540-4535-4682-8355-C1501B4086C2";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -569,7 +575,8 @@
 		289DAAF5140F0FCD0031AF95 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Narges (HPXL3NCRET)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../directions framework\"",
@@ -580,7 +587,7 @@
 				INFOPLIST_FILE = "GeoIntMeasure/GeoIntMeasure-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = GeoIntMeasure;
-				PROVISIONING_PROFILE = "0328C540-4535-4682-8355-C1501B4086C2";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

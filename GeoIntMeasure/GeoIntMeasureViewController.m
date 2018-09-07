@@ -1664,11 +1664,12 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)aSearchBar {
-    //NSLog(@"search for text: %@", searchBar.text);
+    NSLog(@"search for text: %@", searchBar.text);
     [aSearchBar resignFirstResponder];
     [self showNavigationAndMessageBars];
-    //NSLog(@"search still contains text: %@", searchBar.text);
-    //CLLocationCoordinate2D searchLocation = [self addressLocation];
+    
+    NSLog(@"search still contains text: %@", searchBar.text);
+    CLLocationCoordinate2D searchLocation = [self addressLocation];
 }
 
 - (void) showNavigationAndMessageBars {
@@ -1700,6 +1701,7 @@
 }
 
 -(CLLocationCoordinate2D) addressLocation {
+    NSLog(@"addressLocation: -- search for text: %@", searchBar.text);
     NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv", [searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] usedEncoding:NSUTF8StringEncoding error:nil];
     NSArray *listItems = [locationString componentsSeparatedByString:@","];
@@ -1970,9 +1972,9 @@
     // lookingForLocation = 1;
     
     if (coreLocationFailed == 0) {
-        self.messageLabel.hidden = YES;
-        self.activityInd.hidden = NO;
-        [activityInd startAnimating];
+        self.messageLabel.hidden = NO;
+        // self.activityInd.hidden = NO;
+        // [activityInd startAnimating];
     }
     else {
         messageLabel.text = @"current location not available";
@@ -1984,16 +1986,16 @@
         // messageLabel.text = @"acquiring location";
         
         [self.mapView setShowsUserLocation:YES];
-        waitForCurrentLocationTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(doneWaiting) userInfo:nil repeats:NO];
+        waitForCurrentLocationTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(doneWaiting) userInfo:nil repeats:NO];
         // sleep(3);
     }
     else {
-        NSLog(@"pan to current location");
+        NSLog(@"0 pan to current location");
         [self.mapView setShowsUserLocation:YES];
     }
     
     
-     NSLog(@"pan to current location");
+     NSLog(@"1 pan to current location");
      [self.mapView setShowsUserLocation:YES];
 }
 
